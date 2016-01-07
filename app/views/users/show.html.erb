@@ -1,5 +1,11 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
 <%= image_tag(@user.image_url) %>
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<ul>
+<li>Email: <%= @user.email %></li>
+<li>Username: <%= @user.username %></li>
+<li>Associations: <%= @user.full_profile.associations %></li>
+<li>Interests: <%= @user.full_profile.interests %></li>
+<li>Proposal Comments: <%= @user.full_profile.proposal_comments %></li>
+</ul>

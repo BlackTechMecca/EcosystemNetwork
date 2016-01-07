@@ -13,6 +13,19 @@
 
 ActiveRecord::Schema.define(version: 20160107043055) do
 
+  create_table "full_profiles", force: :cascade do |t|
+    t.datetime "last_modified_timestamp"
+    t.text     "proposal_comments"
+    t.text     "associations"
+    t.text     "interests"
+    t.datetime "birth_date"
+    t.integer  "user_id",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "full_profiles", ["user_id"], name: "index_full_profiles_on_user_id", unique: true
+
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"

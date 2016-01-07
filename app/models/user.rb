@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_one :full_profile
+  accepts_nested_attributes_for :full_profile, :update_only => true, :reject_if => :all_blank
+
+  after_save :_create_or_update_full_profile
+  
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -69,6 +74,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def _create_or_update_full_profile
+    new_full_profile = full_profile || build_full_profile                    
+    new_full_profile.update_attribute(:last_modified_timestamp, Time.now)    
+  end                                                                        
+                                                                           
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.linkedin_data"] && session["devise.linkedin_data"]["extra"]["raw_info"]

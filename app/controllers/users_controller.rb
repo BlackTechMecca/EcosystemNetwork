@@ -15,13 +15,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @full_profile = @user.full_profile
   end
 
   def update
   	respond_to do |format|
-  		if @user.update(user_params)
+      if UserService.update(@user, user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
-  			format.html {redirect_to @user, noce: 'Your profile was successfully updated.'}
+  			format.html {redirect_to @user, noce: 'User was successfully updated'}
   			format.json {render :show, status: :ok, location: @user}
   		else
   			format.html {render :edit}
@@ -60,8 +61,8 @@ class UsersController < ApplicationController
   	end
 
   	def user_params
-      accessible = [ :name, :email ] # extend with your own params
-      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
+      accessible = [ :email, :username, :first_name, :last_name, full_profile: [:proposal_comments, :associations, :interests, :birthdate ] ]
       params.require(:user).permit(accessible)
-    end
+  	end
+
 end
