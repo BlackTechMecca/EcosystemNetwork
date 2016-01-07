@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107032427) do
+ActiveRecord::Schema.define(version: 20160107035043) do
+
+  create_table "full_profiles", force: :cascade do |t|
+    t.datetime "last_modified_timestamp"
+    t.text     "proposal_comments"
+    t.text     "associations"
+    t.text     "interests"
+    t.datetime "birth_date"
+    t.integer  "user_id",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "full_profiles", ["user_id"], name: "index_full_profiles_on_user_id", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
