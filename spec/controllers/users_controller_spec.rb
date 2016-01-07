@@ -4,7 +4,7 @@ RSpec.describe UsersController, :type => :controller do
   login_user
 
   let(:valid_attributes) {
-    { :first_name => "John", :last_name => "Doe", :username => "my_username", :full_profile => { :proposal_comments => "Some comments", :associations => "My associations", :interests => "My interests" }}
+    { :email => "my_new_email@gmail.com", :first_name => "John", :last_name => "Doe", :username => "my_username", :full_profile => { :proposal_comments => "Some comments", :associations => "My associations", :interests => "My interests" }}
 
 
   }
@@ -20,6 +20,7 @@ RSpec.describe UsersController, :type => :controller do
         expect(user.first_name).to eq("John")
         expect(user.last_name).to eq("Doe")
         expect(user.username).to eq("my_username")
+        expect(user.email).to eq("my_new_email@gmail.com")
 
         full_profile = user.full_profile
         expect(full_profile.associations).to eq("My associations")
