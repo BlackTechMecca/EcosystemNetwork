@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Comment, :type => :model do
-	let(:comment) {FactoryGirl.create(:comment)}
 
-  	
+	let(:comment) {FactoryGirl.create(:comment)}
 
   	describe "#initialize" do
 
