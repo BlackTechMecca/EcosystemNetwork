@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, :type => :model do
 	let(:comment) {FactoryGirl.create(:comment)}
+
   	
 
   	describe "#initialize" do
@@ -12,6 +13,10 @@ RSpec.describe Comment, :type => :model do
 
 	  	it 'should have a body ' do 
 	  		expect(comment.body).to be_a String
+	  	end
+
+	  	it 'should have an article attached to it' do 
+	  		expect(comment.article).to be_a Article
 	  	end
 
   end
