@@ -8,11 +8,6 @@ RSpec.describe ArticleController, :type => :controller do
 			expect(response.status).to render_template "index"
 			expect(response.status).to be 200 
 		end 
-
-		it 'renders all the articles' do 
-			get :index
-			10.times {FactoryGirl.create(:article)}
-		end
 	end
 
 end
