@@ -1,26 +1,96 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<style>
+.main {
+    max-width: 320px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+.login-or {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+}
+.hr-or {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+.main h3 {
+    text-align: center;
+    line-height: 300%;
+}
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+.main .btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px 0 0 3px;
+  text-align:left !important;
+}
+
+.main .btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.main .btn { 
+  margin-bottom:10px; 
+}
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="main">
+      <h3>Please Log In, or <a href="/users/sign_up">Sign Up</a></h3>
+      <a href="/users/auth/linkedin" class="btn btn-lg btn-primary btn-block btn-labled">
+        <span class="btn-label">
+          <i class="fa fa-linkedin"></i>
+        </span>LinkedIn
+      </a>
+      <div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">or</span>
+      </div>
+
+      <form  method="post" accept-charset="UTF-8" action="/users/sign_in" id="new_user" class="new_user" >
+        <div class="form-group">
+          <label for="user_email">Email</label>
+          <input type="email" class="form-control" id="user_email" name="user[email]" value="" autofocus="autofocus">
+        </div>
+        <div class="form-group">
+          <a class="pull-right" href="/users/password/new">Forgot password?</a>
+          <label for="user_password">Password</label>
+          <input id="user_password" class="form-control" type="password" name="user[password]" autocomplete="off">
+        </div>
+        <div class="checkbox pull-right">
+          <label>
+            <input id="user_remember_me" type="checkbox" name="user[remember_me]" value="1">
+            Remember me </label>
+        </div>
+        <button type="submit" class="btn btn btn-primary">
+          Log In
+        </button>
+      </form>
+
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "users/shared/links" %>
