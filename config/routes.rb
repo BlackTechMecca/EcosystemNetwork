@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-	root 'home#index'
+  resources :connection_requests, :only [:index, :create, :destroy]
+  resources :user_connections, :only [:index, :create, :destroy ]
+
+  root 'home#index'
 
   post 'subscribe' => 'home#subscribe'
 

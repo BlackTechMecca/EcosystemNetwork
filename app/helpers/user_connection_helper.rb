@@ -1,0 +1,2 @@
+module UserConnectionHelper
+end
