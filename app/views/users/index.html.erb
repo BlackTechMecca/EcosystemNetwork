@@ -1,4 +1,107 @@
-<h1 style="padding-top: 30px;">Members</h1>
-<section id="members_section">
+<style>
+	.profile-image{
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.user_image{
+		border: 1px solid #c7c8ca;
+    height: 92px;
+    padding: 3px;
+    width: 92px;
+	}
+	.profile-fullname{
+		color: #0087cd;
+    font-size: 18px;
+    height: 20px;
+    margin-bottom: 2px;
+    margin-top: 0;
+    text-transform: capitalize;
+    width: 502px;
+	}
+	.profile-subtitle{
+		border-bottom: 1px solid #c7c8ca;
+    color: #5c5c5c;
+    margin-bottom: 7px;
+    min-height: 20px;
+    overflow: hidden;
+    padding-bottom: 7px;
+    width: 502px;
+	}
+	.profile-body{
+    height: 32px;
+    width: 502px;
+    z-index: 1;
+	}
+	.connection-action .btn {
+	    background-color: #606e87;
+	    border-color: #606e87;
+	    color: #fff;
+	    padding: 3px 0 4px;
+	    text-align: center;
+	    width: 90px;
+	    margin-bottom: 10px;
+	}
+	.user_row{
+		border-bottom: 1px solid #c7c8ca;
+	}
+	.sidebar{
+		float: left;
+		background-color: #ccc;
+		height: 100px;
+	}
+</style>
 
+<div class="container">
+	<h1>Members</h1>
+</div>
+
+<section>
+	<div class="container">
+		<div class="row">
+
+				<div class="col-lg-4">
+					<div class="row">
+						<h3 style="background-color: #ccc;">Location</h3>
+						<ul style="list-style: none;">
+							<li><input type="checkbox" name="" value="Chicago">Chicago<br></li>
+							<li><input type="checkbox" name="" value="Chicago">Northwest Suburbs<br></li>
+							<li><input type="checkbox" name="" value="Chicago">South Suburbs<br></li>
+							<li><input type="checkbox" name="" value="Chicago">Northwest Suburbs<br></li>
+						</ul>
+						<h3 style="background-color: #ccc;">Industry</h3>
+						<ul style="list-style: none;">
+							<li><input type="checkbox" name="" value="Chicago">Civic Tech<br></li>
+							<li><input type="checkbox" name="" value="Chicago">Healthcare IT<br></li>
+							<li><input type="checkbox" name="" value="Chicago">DevOps<br></li>
+							<li><input type="checkbox" name="" value="Chicago">Software Development<br></li>
+						</ul>
+						<h3 style="background-color: #ccc;">Up For</h3>
+						<ul style="list-style: none;">
+							<li><input type="checkbox" name="" value="Chicago">Being a co-founder<br></li>
+							<li><input type="checkbox" name="" value="Chicago">Discussing growth strategies<br></li>
+							<li><input type="checkbox" name="" value="Chicago">Volunteering<br></li>
+							<li><input type="checkbox" name="" value="Chicago">Job Opportunities<br></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-8">
+					<% @users.each do |user| %>
+					<div class="user_row row">
+						<div class="col-lg-2">
+							<div class="profile-image">
+								<%= link_to image_tag(user.image_url, class: "user_image"), user %>
+							</div>
+						</div>
+						<div class="col-lg-10">
+							<h4 class="profile-fullname"><%= user.first_name %> <%=user.last_name %></h4>
+							<div class="profile-subtitle"><span>Software Engineer | Federal Reserve Bank | Chicago</span></div>
+							<div class="profile-body upfor"><span>Introduction:</span> Enterprise full stack Java Developer with a startup mentality.</div>
+							<div class="member-connection"><div class="connection-action"><a class="btn btn-grey" href="#">+ Connect</a></div></div>
+						</div>
+					</div> <!-- End user's row -->
+					<% end %>
+				</div>
+			</div>
+	</div>
 </section>
