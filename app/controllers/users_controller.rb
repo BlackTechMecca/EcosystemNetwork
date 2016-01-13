@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
-    # authorize! :update, @user 
+    # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
         sign_in(@user, :bypass => true)
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   	end
 
   	def user_params
-      accessible = [ :email, :username, :first_name, :last_name, full_profile: [:proposal_comments, :associations, :interests, :birthdate ] ]
+      accessible = [ :email, :username, :password, :password_confirmation, :first_name, :last_name, full_profile: [:proposal_comments, :associations, :interests, :birthdate ] ]
       params.require(:user).permit(accessible)
   	end
 
