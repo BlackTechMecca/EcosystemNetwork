@@ -5,3 +5,27 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+15.times do
+  FactoryGirl.create(:job_post)
+end
+
+15.times do
+  FactoryGirl.create(:event)
+end
+
+test_user = FactoryGirl.build(:user, :email => "chrissie@gmail.com", :password => "password", :password_confirmation => "password")
+
+test_user.save
+
+
+
+
+
+
+
+
+
+
+
+

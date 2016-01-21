@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-	root 'home#index'
+  resources :events
+  resources :job_posts
+  root 'home#index'
 
   post 'subscribe' => 'home#subscribe'
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show, :edit, :update]
 
+  get 'activity', to: 'activities#index'
   resources :article
   
 end
