@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+	include Postable
 
 	has_many :comments
 	has_many :taggings, as: :taggable
@@ -10,6 +11,10 @@ class Article < ActiveRecord::Base
 
 	def tag(*tag_list)
 		tag_list.each {|tag| Tagging.create(taggable_type:self.class,taggable_id:self.id,tag:tag)}
+	end
+
+	def preview
+		"#{title} - #{body[0..100]} ... (posted by #{user.first_name})"
 	end
 
 end
