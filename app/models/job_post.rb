@@ -6,6 +6,9 @@ class JobPost < ActiveRecord::Base
           :as => :postable,
           :foreign_key => :postable_id
 
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
+
   validates :user_id, :title, :description, :presence => true
 
   after_save :_create_activity
@@ -17,4 +20,9 @@ class JobPost < ActiveRecord::Base
   def preview
     "#{title} - #{description[0..15]}... (posted by #{user.first_name})"
   end
+
+  def tag(*tag_list)
+    tag_list.each {|tag| Tagging.create(taggable_type:self.class,taggable_id:self.id,tag:tag)}
+  end
+
 end

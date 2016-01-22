@@ -22,19 +22,27 @@ RSpec.describe Article, :type => :model do
 	end
 
 	describe "associations" do
-		it "should have many comments" do 
+		xit "should have many comments" do 
 			comment1 = FactoryGirl.create(:comment,article:article)
 			comment2 = FactoryGirl.create(:comment,article:article)
 			expect(article.comments).to eq([comment1,comment2])
 		end
 
-		it 'should have many tags' do 
+		xit 'should have many tags' do 
 			tag1 = FactoryGirl.create(:tag)
 			tag2 = FactoryGirl.create(:tag)
 			tagging1 = FactoryGirl.create(:tagging,article:article,tag:tag1)
 			tagging2 = FactoryGirl.create(:tagging,article:article,tag:tag2)
 			expect(article.tags).to eq([tag1,tag2])
 		end
+
+		it 'should be taggable' do
+			tag1 = FactoryGirl.create(:tag)
+			article.tag(tag1)
+			expect(article.tags.first).to eq(tag1)
+		end
+
+
 	end
 
 	describe "functionality" do 

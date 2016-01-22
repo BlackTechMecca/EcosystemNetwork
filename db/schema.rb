@@ -80,11 +80,14 @@ ActiveRecord::Schema.define(version: 20160121020847) do
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "article_id", null: false
-    t.integer  "tag_id",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       null: false

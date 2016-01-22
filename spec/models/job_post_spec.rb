@@ -56,4 +56,12 @@ RSpec.describe JobPost, :type => :model do
       expect(invalid_post).to_not be_valid
     end
   end
+
+  describe "assoications" do 
+    it 'should be taggable' do
+      tag1 = FactoryGirl.create(:tag)
+      job_post.tag(tag1)
+      expect(job_post.tags.first).to eq(tag1)
+    end
+  end
 end
