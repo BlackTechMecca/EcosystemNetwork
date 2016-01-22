@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121015644) do
+ActiveRecord::Schema.define(version: 20160121020847) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "postable_id"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20160121015644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "full_profiles", force: :cascade do |t|
     t.datetime "last_modified_timestamp"
@@ -69,11 +80,14 @@ ActiveRecord::Schema.define(version: 20160121015644) do
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "article_id", null: false
-    t.integer  "tag_id",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       null: false

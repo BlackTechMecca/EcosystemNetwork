@@ -5,6 +5,8 @@ class JobPost < ActiveRecord::Base
   has_one :activity, 
           :as => :postable,
           :foreign_key => :postable_id
+  
+  has_many :tags, as: :taggable
 
   validates :user_id, :title, :description, :presence => true
 
