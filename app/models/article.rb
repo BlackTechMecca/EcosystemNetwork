@@ -3,11 +3,7 @@ class Article < ActiveRecord::Base
 	has_many :comments
 	has_many :taggings, as: :taggable
 	has_many :tags, through: :taggings
-	# has_many :taggings
-	# has_many :tags, 
-	# 		 as: :taggable, 
-	# 		 through: "taggings", 
-	# 		 :source => "tag"
+
 
 	validates :title, presence: true, length: { minimum: 6}
 	validates :body, presence: true, length: {minimum: 100}
