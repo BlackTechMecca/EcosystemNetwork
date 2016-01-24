@@ -21,6 +21,7 @@ RSpec.describe JobPost, :type => :model do
     end
 
     it "creates a an associated activity" do
+      binding.pry
       expect(job_post.activity).to be_an Activity
     end
   end
