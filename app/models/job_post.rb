@@ -1,6 +1,5 @@
 class JobPost < ActiveRecord::Base
   include Postable
-
   belongs_to :user
   has_one :activity, 
           :as => :postable,
@@ -8,10 +7,9 @@ class JobPost < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
+  accepts_nested_attributes_for :tags, :update_only => true
 
   validates :user_id, :title, :description, :presence => true
-
-  after_save :_create_activity
 
   def poster_name
     user.full_name
@@ -24,5 +22,4 @@ class JobPost < ActiveRecord::Base
   def tag(*tag_list)
     tag_list.each {|tag| Tagging.create(taggable_type:self.class,taggable_id:self.id,tag:tag)}
   end
-
 end

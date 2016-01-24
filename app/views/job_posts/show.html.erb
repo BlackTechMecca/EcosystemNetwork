@@ -20,5 +20,11 @@
   <%= @job_post.poster_name %>
 </p>
 
+<ul>
+  <% @job_post.tags.each do |tag| %>
+  <li><%= tag.name %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_job_post_path(@job_post) %> |
 <%= link_to 'Back', job_posts_path %>

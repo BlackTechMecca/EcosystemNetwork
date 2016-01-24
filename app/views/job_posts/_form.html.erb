@@ -23,6 +23,15 @@
     <%= f.label :date %><br>
     <%= f.date_select :date %>
   </div>
+
+  <br>
+  <div class="field">
+    <%= f.label :tags %><br>
+    <% @tags.each do |tag| %>
+    <input type="checkbox" name="job_post[tag_ids][]" value="<%= tag.id%>" <%= "checked" if @job_post.tags.include?(tag) %> >
+      <%= tag.name %></input>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

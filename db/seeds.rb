@@ -14,6 +14,11 @@ end
   FactoryGirl.create(:event)
 end
 
+FactoryGirl.create(:tag, :name => "entrepreneurship")
+FactoryGirl.create(:tag, :name => "development")
+FactoryGirl.create(:tag, :name => "UI/UX")
+FactoryGirl.create(:tag, :name => "backend")
+
 test_user = FactoryGirl.build(:user, :email => "chrissie@gmail.com", :password => "password", :password_confirmation => "password")
 
 test_user.save

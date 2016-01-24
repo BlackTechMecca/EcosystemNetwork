@@ -81,10 +81,13 @@ RSpec.describe JobPostsController, :type => :controller do
   
   describe "PUT update" do
     describe "with valid params" do
+      let!(:tag_1) { FactoryGirl.create(:tag, :name => "Tag 1") }
+      let!(:tag_2) { FactoryGirl.create(:tag, :name => "Tag 2") }
       let(:new_attributes) {
         { :title => "New Developer",
           :description => "New job Description text",
           :date => Date.today,
+          :tag_ids => [ tag_1.id, tag_2.id ]
         }
       }
   
@@ -100,6 +103,16 @@ RSpec.describe JobPostsController, :type => :controller do
         job_post = subject.current_user.job_posts.create! valid_attributes
         put :update, {:id => job_post.to_param, :job_post => valid_attributes}
         expect(assigns(:job_post)).to eq(job_post)
+      end
+
+      it "updates the requested job_post with tags" do
+        job_post = subject.current_user.job_posts.create! valid_attributes
+        put :update, {:id => job_post.to_param, :job_post => new_attributes}
+        job_post.reload
+
+        expect(job_post.tags.count).to eq(2)
+        expect(job_post.tags.first.name).to eq("Tag 1")
+        expect(job_post.tags.last.name).to eq("Tag 2")
       end
   
       it "redirects to the job_post" do

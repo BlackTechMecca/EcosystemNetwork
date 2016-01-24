@@ -57,10 +57,11 @@ RSpec.describe JobPost, :type => :model do
     end
   end
 
-  describe "assoications" do 
+  describe "associations" do 
     it 'should be taggable' do
       tag1 = FactoryGirl.create(:tag)
-      job_post.tag(tag1)
+      tag2 = FactoryGirl.create(:tag)
+      job_post.tag(tag1, tag2)
       expect(job_post.tags.first).to eq(tag1)
     end
   end

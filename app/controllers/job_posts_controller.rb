@@ -10,10 +10,12 @@ class JobPostsController < ApplicationController
   end
 
   def new
+    @tags = Tag.all
     @job_post = JobPost.new
   end
 
   def edit
+    @tags = Tag.all
   end
 
   def create
@@ -56,6 +58,6 @@ class JobPostsController < ApplicationController
     end
 
     def job_post_params
-      params.require(:job_post).permit(:title, :description, :date)
+      params.require(:job_post).permit(:title, :description, :date, :tag_ids => [])
     end
 end
