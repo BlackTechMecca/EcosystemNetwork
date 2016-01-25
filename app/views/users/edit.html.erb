@@ -1,4 +1,4 @@
-<h2>Users#edit</h1>
+<h2>Edit User</h1>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -53,3 +53,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= button_to 'Cancel', job_posts_path %>

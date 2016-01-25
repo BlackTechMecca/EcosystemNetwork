@@ -17,6 +17,21 @@
     </div>
   <% end -%>
 
+  <%= f.fields_for(@full_profile) do |ff| %>
+    <div>
+      <%= ff.label :proposal_comments %>
+      <%= ff.text_field :proposal_comments %>
+    </div>
+    <div>
+      <%= ff.label :interests %>
+      <%= ff.text_field :interests %>
+    </div>
+    <div>
+      <%= ff.label :associations %>
+      <%= ff.text_field :associations %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
