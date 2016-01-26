@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121020847) do
+ActiveRecord::Schema.define(version: 20160126225529) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "postable_id"
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 20160121020847) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string "state_cd"
+    t.string "name"
+  end
+
+  add_index "states", ["state_cd"], name: "index_states_on_state_cd", unique: true
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "article_id", null: false
     t.integer  "tag_id",     null: false
@@ -117,10 +124,16 @@ ActiveRecord::Schema.define(version: 20160121020847) do
     t.string   "uid"
     t.string   "image_url"
     t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "state_cd"
   end
 
+  add_index "users", ["city"], name: "index_users_on_city"
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["state"], name: "index_users_on_state"
+  add_index "users", ["state_cd"], name: "index_users_on_state_cd", unique: true
 
 end

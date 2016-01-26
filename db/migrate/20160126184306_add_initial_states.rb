@@ -1,23 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-#
-15.times do
-  FactoryGirl.create(:job_post)
-end
-
-15.times do
-  FactoryGirl.create(:event)
-end
-
-test_user = FactoryGirl.build(:user, :email => "chrissie@gmail.com", :password => "password", :password_confirmation => "password")
-
-test_user.save
-
+class AddInitialStates < ActiveRecord::Migration
+  def change
+  	def up
   		State.create(state_cd: "AL", name: "Alabama")
   		State.create(state_cd: "AK", name: "Alaska")
   		State.create(state_cd: "AZ", name: "Arizona")
@@ -68,13 +51,10 @@ test_user.save
   		State.create(state_cd: "WV", name: "West Virginia")
   		State.create(state_cd: "WI", name: "Wisconsin")
   		State.create(state_cd: "WY", name: "Wyoming")
+  	end
 
-
-
-
-
-
-
-
-
-
+  	def down
+  		State.delete_all
+  	end
+  end
+end

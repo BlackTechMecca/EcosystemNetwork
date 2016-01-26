@@ -1,11 +1,162 @@
-<h1>Users#show</h1>
+<div class="content">
 
-<%= image_tag(@user.image_url) %>
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-<ul>
-<li>Email: <%= @user.email %></li>
-<li>Username: <%= @user.username %></li>
-<li>Associations: <%= @user.full_profile.associations %></li>
-<li>Interests: <%= @user.full_profile.interests %></li>
-<li>Proposal Comments: <%= @user.full_profile.proposal_comments %></li>
-</ul>
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-3 col-sm-5">
+
+				<div class="profile-avatar">
+					<%= image_tag(@user.image_url, class: "profile-avatar-img img-responsive thumbnail") %>
+				</div>
+
+				<div class="list-group">
+					<a href="javascript:;" class="list-group-item">
+            <i class="fa fa-asterisk text-primary"></i> &nbsp;&nbsp;Activity Feed
+            <i class="fa fa-chevron-right list-group-chevron"></i>
+          </a>
+          <a href="javascript:;" class="list-group-item">
+           	<i class="fa fa-book text-primary"></i> &nbsp;&nbsp;Projects
+            <i class="fa fa-chevron-right list-group-chevron"></i>
+            <span class="badge">3</span>
+          </a>
+          <a href="javascript:;" class="list-group-item">
+          	<i class="fa fa-envelope text-primary"></i> &nbsp;&nbsp;Messages
+            <i class="fa fa-chevron-right list-group-chevron"></i>
+          </a>
+          <a href="javascript:;" class="list-group-item">
+          	<i class="fa fa-group text-primary"></i> &nbsp;&nbsp;Friends
+            <i class="fa fa-chevron-right list-group-chevron"></i>
+          </a>
+          <%= link_to edit_user_path(@user), class: "list-group-item" do %>
+          	<i class="fa fa-cog text-primary"></i> &nbsp;&nbsp;Settings
+            <i class="fa fa-chevron-right list-group-chevron"></i>
+          <% end %>
+        </div> <!-- list group -->
+
+      </div> <!-- col-md-3 -->
+
+      <div class="col-md-6 col-sm-7">
+
+      	<br class="visible-xs">
+
+      	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+
+      	<h5 class="text-muted">Software Engineer & M.S. Computer Science Student</h5>
+
+      	<hr>
+
+      	<p>
+        	<a href="javascript:;" class="btn btn-primary">Follow <%= @user.first_name %></a>
+          &nbsp;&nbsp;
+          <a href="javascript:;" class="btn btn-secondary">Send Message</a>
+        </p>
+
+        <hr>
+
+        <ul class="icons-list">
+        	<li><i class="icon-li fa fa-envelope"></i><%= @user.email %></li>
+          <li><i class="icon-li fa fa-globe"></i> Website</li>
+          <li><i class="icon-li fa fa-map-marker"></i> <%= @user.city %>, <%= @user.state_cd %></li>
+        </ul> 
+
+        <br>
+
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.</p>
+
+        <hr>
+
+        <br><br>
+
+        <div class="heading-block">
+        	<h4>Activity Feed</h4>
+        </div>
+
+        <div class="share-widget clearfix">
+        	
+        	<textarea class="form-control share-widget-textarea" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
+
+        	<div class="share-widget-actions">
+
+        		<div class="share-widget-types pull-left">
+        			<a href="javascript:;" class="fa fa-picture-o ui-tooltip" title="Post an Image"><i></i></a>
+              <a href="javascript:;" class="fa fa-video-camera ui-tooltip" title="Upload a Video"><i></i></a>
+              <a href="javascript:;" class="fa fa-lightbulb-o ui-tooltip" title="Post an Idea"><i></i></a>
+              <a href="javascript:;" class="fa fa-question-circle ui-tooltip" title="Ask a Question"><i></i></a>
+            </div>
+
+            <div class="pull-right">
+            	<a class="btn btn-primary btn-sm" tabindex="2">Post</a>
+            </div>
+
+          </div> <!-- /.share-widget-actions -->
+
+          <br class="visible-xs">            
+          <br class="visible-xs">
+
+        </div>
+
+      </div> <!-- col-md-6 -->
+
+      <div class="col-md-3">
+
+      	<div class="heading-block">
+      		<h5>Social Stats</h5>
+      	</div>
+
+      	<div class="list-group">
+
+      		<a href="#" class="list-group-item">
+          	<h3 class="pull-right"><i class="fa fa-eye text-primary"></i></h3>
+            <h4 class="list-group-item-heading">38,847</h4>
+            <p class="list-group-item-text">Profile Views</p>                  
+          </a>
+          <a href="#" class="list-group-item">
+          	<h3 class="pull-right"><i class="fa fa-facebook-square  text-primary"></i></h3>
+            <h4 class="list-group-item-heading">3,482</h4>
+            <p class="list-group-item-text">Facebook Likes</p>
+          </a>
+          <a href="#" class="list-group-item">
+          	<h3 class="pull-right"><i class="fa fa-twitter-square  text-primary"></i></h3>
+            <h4 class="list-group-item-heading">5,845</h4>
+            <p class="list-group-item-text">Twitter Followers</p>
+          </a>
+        
+        </div> <!-- /.list-group -->
+
+        <div class="heading-block">
+        	<h5>Project Activity</h5>
+        </div> <!-- /.heading-block -->
+
+        <div class="well">
+        	<ul class="icons-list text-md">
+        		<li>
+							<i class="icon-li fa fa-location-arrow"></i>
+              <strong><%= @user.first_name %></strong> uploaded 6 files. 
+              <br>
+              <small>about 4 hours ago</small>
+            </li>
+            <li>
+            	<i class="icon-li fa fa-location-arrow"></i>
+              <strong><%= @user.first_name %></strong> followed the research interest: <a href="javascript:;">Open Access Books in Linguistics</a>. 
+              <br>
+              <small>about 23 hours ago</small>
+            </li>
+            <li>
+							<i class="icon-li fa fa-location-arrow"></i>
+              <strong><%= @user.first_name %></strong> added 51 papers. 
+              <br>
+              <small>2 days ago</small>
+            </li>
+          </ul>
+        </div> <!-- well -->
+
+      </div> <!-- col -->
+
+    </div> <!-- row -->
+
+    <br><br>
+
+	</div>
+
+</div>

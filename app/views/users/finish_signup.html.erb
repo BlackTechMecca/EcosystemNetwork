@@ -16,6 +16,18 @@
         <p class="help-block">No spam.</p>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.label :city %>
+      <div class="controls">
+        <%= f.text_field :city, :autofocus => true, :value => '', class: 'form-control input-lg' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :state %>
+      <div class="controls">
+      <%= f.collection_select(:state_cd, State.all, :state_cd, :name, {:include_blank => 'Select state'}, {:class => 'form-control input-lg'}) %>
+      </div>
+    </div>
     <div class="field">
       <%= f.label :password %>
       <% if @minimum_password_length %>
