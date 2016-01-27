@@ -10,12 +10,10 @@ class JobPostsController < ApplicationController
   end
 
   def new
-    @tags = Tag.all
     @job_post = JobPost.new
   end
 
   def edit
-    @tags = Tag.all
   end
 
   def create

@@ -27,7 +27,7 @@
   <br>
   <div class="field">
     <%= f.label :tags %><br>
-    <% @tags.each do |tag| %>
+    <% Tag.all.each do |tag| %>
     <input type="checkbox" name="job_post[tag_ids][]" value="<%= tag.id%>" <%= "checked" if @job_post.tags.include?(tag) %> >
       <%= tag.name %></input>
     <% end %>
