@@ -1,96 +1,67 @@
+<script>
+$(document.body).addClass('account-bg');
+</script>
 
-<style>
-.main {
-    max-width: 320px;
-    margin: 0 auto;
-    font-size: 12px;
-}
-.login-or {
-    position: relative;
-    font-size: 18px;
-    color: #aaa;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.span-or {
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: -2px;
-    margin-left: -25px;
-    background-color: #fff;
-    width: 50px;
-    text-align: center;
-}
-.hr-or {
-    background-color: #cdcdcd;
-    height: 1px;
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-}
+<br class="xs-80">
 
-.main h3 {
-    text-align: center;
-    line-height: 300%;
-}
+<div class="account-wrapper">
 
-.main .btn-label {
-  position: relative;
-  left: -12px;
-  display: inline-block;
-  padding: 6px 12px;
-  background: rgba(0,0,0,0.15);
-  border-radius: 3px 0 0 3px;
-  text-align:left !important;
-}
+	<div class="account-body">
 
-.main .btn-labeled {
-  padding-top: 0;
-  padding-bottom: 0;
-}
+		<h3>Welcome back to the Ecosystem.</h3>
 
-.main .btn { 
-  margin-bottom:10px; 
-}
-</style>
+		<h5>Please sign in to get access.</h5>
 
-<div class="container">
-  <div class="row">
-    <div class="main">
-      <h3>Please Log In, or <a href="/users/sign_up">Sign Up</a></h3>
-      <a href="/users/auth/linkedin" class="btn btn-lg btn-primary btn-block btn-labled">
-        <span class="btn-label">
-          <i class="fa fa-linkedin"></i>
-        </span>LinkedIn
-      </a>
-      <div class="login-or">
-        <hr class="hr-or">
-        <span class="span-or">or</span>
-      </div>
+		<br>
 
-      <form  method="post" accept-charset="UTF-8" action="/users/sign_in" id="new_user" class="new_user" >
+		<div class="row">	
+
+			<div class="col-sm-12">
+				<a href="/users/auth/linkedin" class="btn btn-twitter btn-block">
+					<i class="fa fa-linkedin"></i>
+					&nbsp;&nbsp;Login with LinkedIn
+				</a>
+			</div>
+
+		</div>
+
+		<span class="account-or-social text-muted">OR, SIGN IN BELOW</span>
+
+      <form id="new_user" class="form account-form" method="post" accept-charset="UTF-8" action="/users/sign_in">
         <div class="form-group">
-          <label for="user_email">Email</label>
-          <input type="email" class="form-control" id="user_email" name="user[email]" value="" autofocus="autofocus">
-        </div>
+          <label for="user_email" class="placeholder-hidden">Email</label>
+          <input type="text" class="form-control" name="user[email]" id="user_email" placeholder="Email" tabindex="1">
+        </div> <!-- /.form-group -->
+
         <div class="form-group">
-          <a class="pull-right" href="/users/password/new">Forgot password?</a>
-          <label for="user_password">Password</label>
-          <input id="user_password" class="form-control" type="password" name="user[password]" autocomplete="off">
-        </div>
-        <div class="checkbox pull-right">
-          <label>
-            <input id="user_remember_me" type="checkbox" name="user[remember_me]" value="1">
-            Remember me </label>
-        </div>
-        <button type="submit" class="btn btn btn-primary">
-          Log In
-        </button>
+          <label for="user_password" class="placeholder-hidden">Password</label>
+          <input type="password" class="form-control" name="user[password]" id="user_password" placeholder="Password" tabindex="2">
+        </div> <!-- /.form-group -->
+
+        <div class="form-group clearfix">
+          <div class="pull-left">					
+            <label class="checkbox-inline">
+            <input type="checkbox" name="user[remember_me]" class="" value="" tabindex="3"> <small>Remember me</small>
+            </label>
+          </div>
+
+          <div class="pull-right">
+            <small><a href="/users/password/new">Forgot Password?</a></small>
+          </div>
+        </div> <!-- /.form-group -->
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block btn-lg" tabindex="4">Signin &nbsp; <i class="fa fa-play-circle"></i></button>
+        </div> <!-- /.form-group -->
+
       </form>
 
     </div>
-  </div>
-</div>
 
+    <div class="account-footer">
+      <p>
+      Don't have an account? &nbsp;
+      <a href="/users/sign_up" class="">Create an Account!</a>
+      </p>
+    </div> <!-- /.account-footer -->
+</div>

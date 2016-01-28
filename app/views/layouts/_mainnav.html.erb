@@ -1,0 +1,171 @@
+<% if current_user.present? %>
+<div class="mainnav ">
+
+    <div class="container">
+
+      <a class="mainnav-toggle" data-toggle="collapse" data-target=".mainnav-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars"></i>
+      </a>
+
+      <nav class="collapse mainnav-collapse" role="navigation">
+
+        <form class="mainnav-form" role="search">
+          <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
+          <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
+        </form>
+
+        <ul class="mainnav-menu">
+
+          <li class="dropdown ">
+          	<a href="./index.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+            
+          	Profile
+          	<i class="mainnav-caret"></i>
+          	</a>
+
+          	<ul class="dropdown-menu" role="menu">
+              <li>
+                <%= link_to user_path(current_user) do %>
+                <i class="fa fa-user dropdown-icon "></i> 
+                View profile
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to edit_user_path(current_user) do %>
+                <i class="fa fa-cogs dropdown-icon "></i> 
+                Edit profile
+                <% end %>
+              </li>
+          	</ul>
+          </li>
+
+
+          <li class="dropdown ">
+
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+              
+            Connections
+            <i class="mainnav-caret"></i>					
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+
+              <li>
+                <a href="/users">
+                <i class="fa fa-bars dropdown-icon "></i> 
+                Discover new connections
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                <i class="fa fa-calendar-o dropdown-icon "></i> 
+                Invite friends
+                </a>
+              </li>	
+
+              <li>
+                <a href="#">
+                <i class="fa fa-calendar-o dropdown-icon "></i> 
+                See all connections
+                </a>
+              </li>   
+            </ul>
+          </li>
+
+
+          <li class="dropdown">
+
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+              
+            News
+            <i class="mainnav-caret"></i>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="./page-pricing-plans.html">
+                <i class="fa fa-money dropdown-icon "></i> 
+                All news
+                </a>
+              </li>
+
+              <li>
+                <a href="./page-pricing-table.html">
+                <i class="fa fa-dollar dropdown-icon "></i> 
+                Metric reports
+                </a>
+              </li>
+
+              <li>
+                <a href="./page-profile.html">
+                <i class="fa fa-user dropdown-icon "></i> 
+                Share your news
+                </a>
+              </li>
+            </ul>
+          </li>          
+
+
+          <li class="dropdown ">
+
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+              
+            Events
+            <i class="mainnav-caret"></i>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="./page-notifications.html">
+                <i class="fa fa-bell dropdown-icon "></i> 
+                Upcoming events
+                </a>
+              </li>			
+
+              <li>
+                <a href="./extras-icons.html">
+                <i class="fa fa-smile-o dropdown-icon "></i> 
+                Add an event
+                </a>
+              </li>   
+
+            </ul>
+
+          </li>
+
+
+
+          <li class="dropdown">
+
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+            Jobs
+            <i class="mainnav-caret"></i>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="../landing/">
+                <i class="fa fa-external-link dropdown-icon "></i> 
+                Find a job
+                </a>
+              </li>
+              <li>
+                <a href="../launch/">
+                <i class="fa fa-external-link dropdown-icon "></i> 
+                Post a job
+                </a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div> <!-- /.container -->
+
+</div> <!-- /.mainnav -->
+<% end %>

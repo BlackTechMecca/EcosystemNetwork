@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
+  before_action :correct_user, only:[:edit, :update, :destroy]
 
   # GET /users
   def index
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
 
   def edit
     @full_profile = @user.full_profile
+    @states = State.all
   end
 
   def update
@@ -61,8 +63,14 @@ class UsersController < ApplicationController
   	end
 
   	def user_params
-      accessible = [ :email, :username, :password, :password_confirmation, :first_name, :last_name, full_profile: [:proposal_comments, :associations, :interests, :birthdate ] ]
+      accessible = [ :email, :username, :password, :password_confirmation, :first_name, :last_name, :city, :state_cd,
+                      full_profile: [:proposal_comments, :associations, :interests, :birthdate ] ]
       params.require(:user).permit(accessible)
   	end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(users_path) unless @user == current_user
+    end
 
 end
