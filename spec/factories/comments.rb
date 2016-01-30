@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :comment do
-  	user    { FactoryGirl.create(:user) }
-  	body    { Faker::Lorem.sentence }
-  	article { FactoryGirl.create(:article) }
+  	user             { FactoryGirl.create(:user) }
+  	body    	     { Faker::Lorem.sentence }
+  	commentable_type { ["Article", "JobPost"].sample }
+  	commentable_id   {1}
     
   end
 
