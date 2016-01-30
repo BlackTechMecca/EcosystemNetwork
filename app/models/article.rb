@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   include Postable
 
-  has_many :comments
+  has_many :comments, as: :commentable
   validates :title, :presence => true
 
   def preview
