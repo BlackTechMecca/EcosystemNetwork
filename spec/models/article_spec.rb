@@ -23,8 +23,8 @@ RSpec.describe Article, :type => :model do
 
   describe "associations" do
     it "should have many comments" do 
-      comment1 = FactoryGirl.create(:comment, article:article)
-      comment2 = FactoryGirl.create(:comment, article:article)
+      comment1 = FactoryGirl.create(:comment, commentable_type:article.class,commentable_id:article.id)
+      comment2 = FactoryGirl.create(:comment, commentable_type:article.class,commentable_id:article.id)
       expect(article.comments).to eq([comment1, comment2])
     end
 
