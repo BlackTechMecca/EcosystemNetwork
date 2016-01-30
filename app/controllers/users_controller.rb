@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def edit
     @full_profile = @user.full_profile
+    @social_profile = @user.social_profile
     @states = State.all
   end
 
@@ -64,7 +65,8 @@ class UsersController < ApplicationController
 
   	def user_params
       accessible = [ :email, :username, :password, :password_confirmation, :first_name, :last_name, :city, :state_cd,
-                      full_profile: [:proposal_comments, :associations, :interests, :birthdate ] ]
+                      full_profile: [:proposal_comments, :associations, :interests, :birthdate ], 
+                      social_profile: [:instagram, :facebook, :linkedin, :github, :twitter] ]
       params.require(:user).permit(accessible)
   	end
 

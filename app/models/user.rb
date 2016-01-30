@@ -5,11 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :full_profile
+  has_one :social_profile
   has_many :job_posts
+
   accepts_nested_attributes_for :full_profile, :update_only => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :social_profile, :update_only => true, :reject_if => :all_blank
 
   after_save :_create_or_update_full_profile
-  
+  after_save :_create_or_update_social_profile
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -78,6 +82,11 @@ class User < ActiveRecord::Base
   def _create_or_update_full_profile
     new_full_profile = full_profile || build_full_profile                    
     new_full_profile.update_attribute(:last_modified_timestamp, Time.now)    
+  end
+
+  def _create_or_update_social_profile
+    new_social_profile = social_profile || build_social_profile
+    new_social_profile.update_attribute(:last_modified_timestamp, Time.now)
   end                                                                        
                                                                            
   def self.new_with_session(params, session)

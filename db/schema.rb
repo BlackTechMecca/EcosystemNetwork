@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126225529) do
+ActiveRecord::Schema.define(version: 20160130001134) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "postable_id"
@@ -78,6 +78,20 @@ ActiveRecord::Schema.define(version: 20160126225529) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "social_profiles", force: :cascade do |t|
+    t.string   "twitter"
+    t.string   "facebook"
+    t.string   "instagram"
+    t.string   "github"
+    t.string   "linkedin"
+    t.integer  "user_id",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.datetime "last_modified_timestamp"
+  end
+
+  add_index "social_profiles", ["user_id"], name: "index_social_profiles_on_user_id", unique: true
 
   create_table "states", force: :cascade do |t|
     t.string "state_cd"

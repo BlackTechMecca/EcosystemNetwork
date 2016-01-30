@@ -10,7 +10,7 @@
 
         <a class="navbar-brand navbar-brand-img" href="/"><img src="/assets/images/btm_logo.png"> Black Tech Mecca</a>
       </div> <!-- /.navbar-header -->
-
+      <% if current_user.present? %>
       <nav class="collapse navbar-collapse" role="navigation">
 
         <ul class="nav navbar-nav navbar-left">
@@ -143,7 +143,7 @@
 
         </ul>
 
-
+        <% end %>
 
         <ul class="nav navbar-nav navbar-right">    
 

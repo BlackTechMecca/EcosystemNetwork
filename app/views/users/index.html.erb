@@ -90,7 +90,7 @@
 					<div class="user_row row">
 						<div class="col-lg-2">
 							<div class="profile-image">
-								<%= link_to image_tag(user.image_url, class: "user_image"), user %>
+								<%= link_to (gravatar_for user), user %>
 							</div>
 						</div>
 						<div class="col-lg-10">

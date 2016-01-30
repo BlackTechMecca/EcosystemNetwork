@@ -7,7 +7,7 @@
 			<div class="col-md-3 col-sm-5">
 
 				<div class="profile-avatar">
-					<%= image_tag(@user.image_url, class: "profile-avatar-img img-responsive thumbnail") %>
+					<%= gravatar_for @user %>
 				</div>
 
 				<div class="list-group">
@@ -123,6 +123,28 @@
           </a>
         
         </div> <!-- /.list-group -->
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Social Media</div>
+            <div class="panel-body">
+            <% unless @user.social_profile.linkedin.blank? %>
+              <a href="<%= @user.social_profile.linkedin %>" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
+            <% end %>
+            <% unless @user.social_profile.facebook.blank? %>
+            <a href="<%= @user.social_profile.facebook %>" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+            <% end %>
+            <% unless @user.social_profile.twitter.blank? %>
+            <a href="<%= @user.social_profile.twitter %>" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+            <% end %>
+            <% unless @user.social_profile.instagram.blank? %>
+            <a href="<%= @user.social_profile.instagram %>" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+            <% end %>
+            <% unless @user.social_profile.github.blank? %>
+            <a href="<%= @user.social_profile.github %>" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+            <% end %>
+            </div>
+          </div>
+        <br>
 
         <div class="heading-block">
         	<h5>Project Activity</h5>
