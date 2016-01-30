@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_one :full_profile
   has_one :social_profile
   has_many :job_posts
+  has_many :events
 
   accepts_nested_attributes_for :full_profile, :update_only => true, :reject_if => :all_blank
   accepts_nested_attributes_for :social_profile, :update_only => true, :reject_if => :all_blank
