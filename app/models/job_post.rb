@@ -1,6 +1,7 @@
 class JobPost < ActiveRecord::Base
   include Postable
 
+  has_many :comments, as: :commentable
   validates :user_id, :title, :description, :presence => true
 
   def preview
