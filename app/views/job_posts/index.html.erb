@@ -12,8 +12,7 @@
     </tr>
     <tr>
 <form class="mainnav-form" role="search" action="/job_posts" method="get">
-  <input type="text" class="form-control input-md mainnav-search-query" name="search[tag]" placeholder="Tags">
-  <input type="text" class="form-control input-md mainnav-search-query" name="search[title]" placeholder="Title contains">
+  <input type="text" class="form-control input-md mainnav-search-query" name="search" placeholder="Search Jobs" value="<%= @previous_search %>">
   <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
 </form>
     </tr>
@@ -22,7 +21,7 @@
   <tbody>
     <% @job_posts.each do |job_post| %>
       <tr>
-        <td><%= job_post.title %></td>
+        <td><%= link_to job_post.title, job_post_path(job_post)%></td>
         <td><%= job_post.description %></td>
         <td><%= job_post.date %></td>
         <td><%= link_to job_post.poster_name, user_path(job_post.user) %></td>

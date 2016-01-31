@@ -22,14 +22,19 @@ RSpec.describe JobPostsController, :type => :controller do
       expect(assigns(:job_posts)).to eq([job_post])
     end
 
-    it "returns only job posts with a particular tag if given a search param" do
-      ruby_job_post = FactoryGirl.create(:job_post, :user_id => subject.current_user.id)
-      java_job_post = FactoryGirl.create(:job_post, :user_id => subject.current_user.id)
-      ruby_tag = FactoryGirl.create(:tag, :name => "ruby", :taggable => ruby_job_post)
+    context "search" do
+      it "returns only job posts matching the query if given a search param" do
+        ruby_job_post = FactoryGirl.create(:job_post, :title => "Ruby developer", :user_id => subject.current_user.id)
+        java_job_post = FactoryGirl.create(:job_post, :title => "Java developer", :user_id => subject.current_user.id)
 
+        get :index, {:search => "ruby" }
+        expect(assigns(:job_posts)).to eq([ruby_job_post])
+      end
 
-      get :index, {:search => {:tag => "ruby"} }
-      expect(assigns(:job_posts)).to eq([ruby_job_post])
+      it "populates the search field with the value of the search" do
+        get :index, {:search => "ruby" }
+        expect(assigns(:previous_search)).to eq("ruby")
+      end
     end
   end
 

@@ -5,6 +5,7 @@ class JobPostsController < ApplicationController
   def index
     if params[:search]
       @job_posts = JobPost.search(params[:search])
+      @previous_search = params[:search]
     else
       @job_posts = JobPost.all
     end

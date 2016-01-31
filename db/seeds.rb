@@ -30,7 +30,7 @@ test_user.save
   		State.create(state_cd: "CA", name: "California")
   		State.create(state_cd: "CO", name: "Colorado")
   		State.create(state_cd: "CT", name: "Connecticut")
-			State.create(state_cd: "DE", name: "Delaware")
+		State.create(state_cd: "DE", name: "Delaware")
   		State.create(state_cd: "FL", name: "Florida")
   		State.create(state_cd: "GA", name: "Georgia")
   		State.create(state_cd: "HI", name: "Hawaii")

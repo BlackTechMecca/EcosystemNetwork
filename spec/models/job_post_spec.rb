@@ -67,38 +67,27 @@ RSpec.describe JobPost, :type => :model do
   end
 
   describe "::search" do
-    it "returns all JobPosts with a particular tag" do
-      ruby_job_post = FactoryGirl.create(:job_post)
-      java_job_post = FactoryGirl.create(:job_post)
+    it "returns all JobPosts with a particular word in the title, description" do
+      job_post_no_ruby = FactoryGirl.create(
+        :job_post, 
+        :title =>"Developer", 
+        :description => "Work on interesting projects"
+      )
+      job_post_ruby_title = FactoryGirl.create(
+        :job_post, 
+        :title => "Senior Ruby Developer", 
+        :description => "Team lead position at fast-paced company"
+      )
+      job_post_ruby_description = FactoryGirl.create(
+        :job_post, 
+        :title => "Senior Developer", 
+        :description => "3+ years Ruby required"
+      )
 
-      ruby_tag = FactoryGirl.create(:tag, :name => "ruby")
-      java_tag = FactoryGirl.create(:tag, :name => "java")
-
-      ruby_job_post.tag(ruby_tag)
-      java_job_post.tag(java_tag)
-
-      search_params = { :tag => "ruby", :title => ""}
-      expect(JobPost.search(search_params)).to eq([ruby_job_post])
-    end
-
-    it "returns all JobPosts with a particular word in the title" do
-      ruby_job_post = FactoryGirl.create(:job_post, :title => "Ruby Developer wanted")
-      java_job_post = FactoryGirl.create(:job_post, :title => "Java Developer wanted")
-
-      search_params = { :title => "ruby", :tag => ""}
-      expect(JobPost.search(search_params)).to eq([ruby_job_post])
-    end
-
-    it "returns all JobPosts with a particular word in the title and matching a given tag" do
-      senior_ruby_job_post = FactoryGirl.create(:job_post, :title => "Senior Ruby Developer wanted")
-      junior_ruby_job_post = FactoryGirl.create(:job_post, :title => "Junior Ruby Developer wanted")
-
-      senior_tag = FactoryGirl.create(:tag, :name => "senior")
-
-      senior_ruby_job_post.tag(senior_tag)
-
-      search_params = { :title => "ruby", :tag => "senior"}
-      expect(JobPost.search(search_params)).to eq([senior_ruby_job_post])
+      search_results = JobPost.search("ruby")
+      expect(search_results).to include(job_post_ruby_title)
+      expect(search_results).to include(job_post_ruby_description)
+      expect(search_results).to_not include(job_post_no_ruby)
     end
   end
 end
