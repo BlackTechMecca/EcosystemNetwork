@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   resources :events
-  resources :job_posts
+  resources :job_posts do
+    collection do
+      get 'search'
+    end
+  end
+
   root 'home#index'
 
   post 'subscribe' => 'home#subscribe'

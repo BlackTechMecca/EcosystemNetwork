@@ -3,7 +3,11 @@ class JobPostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @job_posts = JobPost.all
+    if params[:search]
+      @job_posts = JobPost.search(params[:search])
+    else
+      @job_posts = JobPost.all
+    end
   end
 
   def show
@@ -51,11 +55,15 @@ class JobPostsController < ApplicationController
   end
 
   private
-    def set_job_post
-      @job_post = JobPost.find(params[:id])
-    end
+  def set_job_post
+    @job_post = JobPost.find(params[:id])
+  end
 
-    def job_post_params
-      params.require(:job_post).permit(:title, :description, :date, :tag_ids => [])
-    end
+  def query_params
+    params.require(:search).permit(:title, :tag)
+  end
+
+  def job_post_params
+    params.require(:job_post).permit(:title, :description, :date, :tag_ids => [])
+  end
 end

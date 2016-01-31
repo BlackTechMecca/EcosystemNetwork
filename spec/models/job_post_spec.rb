@@ -65,4 +65,40 @@ RSpec.describe JobPost, :type => :model do
       expect(job_post.tags.first).to eq(tag1)
     end
   end
+
+  describe "::search" do
+    it "returns all JobPosts with a particular tag" do
+      ruby_job_post = FactoryGirl.create(:job_post)
+      java_job_post = FactoryGirl.create(:job_post)
+
+      ruby_tag = FactoryGirl.create(:tag, :name => "ruby")
+      java_tag = FactoryGirl.create(:tag, :name => "java")
+
+      ruby_job_post.tag(ruby_tag)
+      java_job_post.tag(java_tag)
+
+      search_params = { :tag => "ruby", :title => ""}
+      expect(JobPost.search(search_params)).to eq([ruby_job_post])
+    end
+
+    it "returns all JobPosts with a particular word in the title" do
+      ruby_job_post = FactoryGirl.create(:job_post, :title => "Ruby Developer wanted")
+      java_job_post = FactoryGirl.create(:job_post, :title => "Java Developer wanted")
+
+      search_params = { :title => "ruby", :tag => ""}
+      expect(JobPost.search(search_params)).to eq([ruby_job_post])
+    end
+
+    it "returns all JobPosts with a particular word in the title and matching a given tag" do
+      senior_ruby_job_post = FactoryGirl.create(:job_post, :title => "Senior Ruby Developer wanted")
+      junior_ruby_job_post = FactoryGirl.create(:job_post, :title => "Junior Ruby Developer wanted")
+
+      senior_tag = FactoryGirl.create(:tag, :name => "senior")
+
+      senior_ruby_job_post.tag(senior_tag)
+
+      search_params = { :title => "ruby", :tag => "senior"}
+      expect(JobPost.search(search_params)).to eq([senior_ruby_job_post])
+    end
+  end
 end

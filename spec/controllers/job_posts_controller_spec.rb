@@ -21,6 +21,16 @@ RSpec.describe JobPostsController, :type => :controller do
       get :index
       expect(assigns(:job_posts)).to eq([job_post])
     end
+
+    it "returns only job posts with a particular tag if given a search param" do
+      ruby_job_post = FactoryGirl.create(:job_post, :user_id => subject.current_user.id)
+      java_job_post = FactoryGirl.create(:job_post, :user_id => subject.current_user.id)
+      ruby_tag = FactoryGirl.create(:tag, :name => "ruby", :taggable => ruby_job_post)
+
+
+      get :index, {:search => {:tag => "ruby"} }
+      expect(assigns(:job_posts)).to eq([ruby_job_post])
+    end
   end
 
   describe "GET show" do
