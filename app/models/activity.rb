@@ -1,13 +1,6 @@
 class Activity < ActiveRecord::Base
   belongs_to :postable, :polymorphic => true
-
-  def preview
-    self.postable.preview
-  end
-
-  def path_to_postable
-    self.postable.path
-  end
+  delegate :preview, :path, :user, :poster_name, to: :postable
 
   def self.recent_activity(limit)
     Activity.last(limit)

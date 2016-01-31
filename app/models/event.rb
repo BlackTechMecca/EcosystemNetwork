@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   validates :user_id, :name, :description, :date, :presence => true
 
   def preview
-    "#{name} - #{description[0..15]}... (posted by #{user.first_name})"
+    "#{name} - #{description[0..15]}..."
   end
 
   def self.search(query)

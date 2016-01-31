@@ -9,8 +9,8 @@
   <tr>
     <ul>
       <% @activities.each do |activity| %>
-      <li><%= activity.preview %> [ See <%= link_to(activity.postable_type,
-      activity.path_to_postable) %> ]</li>
+      <li><%= link_to activity.poster_name, user_path(activity.user) %> just posted a new <%= link_to(activity.postable_type,
+      activity.path) %>: <%= activity.preview %></li>
       <% end %>
     </ul>
   </tr>
