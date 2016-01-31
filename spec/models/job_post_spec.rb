@@ -31,6 +31,12 @@ RSpec.describe JobPost, :type => :model do
     end
   end
 
+  describe "#path" do
+    it "returns the path of the particular post" do
+      expect(job_post.path).to eq("job_posts/1")
+    end
+  end
+
   describe "#poster_name" do
     it "returns the full name of the user who created it" do
       expect(job_post.poster_name).to eq("Jack Test")

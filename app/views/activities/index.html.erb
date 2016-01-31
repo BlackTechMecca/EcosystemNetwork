@@ -1,6 +1,17 @@
-<ul>
-  <% @recent_activities.each do |activity| %>
-  <li><%= activity.preview %> [ See <%= link_to(activity.postable_type,
-  activity.path_to_postable) %> ]</li>
-  <% end %>
-</ul>
+<table>
+  <tr>
+    <form class="mainnav-form" role="search" action="/activity" method="get">
+      <input type="text" class="form-control input-md mainnav-search-query" name="tag" value="<%= @tag %>" placeholder="Search by tag">
+      <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
+    </form>
+  </tr>
+
+  <tr>
+    <ul>
+      <% @activities.each do |activity| %>
+      <li><%= activity.preview %> [ See <%= link_to(activity.postable_type,
+      activity.path_to_postable) %> ]</li>
+      <% end %>
+    </ul>
+  </tr>
+</table>

@@ -6,10 +6,17 @@ class Activity < ActiveRecord::Base
   end
 
   def path_to_postable
-    "/#{self.postable.class.table_name}/#{self.postable_id}"
+    self.postable.path
   end
 
   def self.recent_activity(limit)
     Activity.last(limit)
+  end
+
+  def self.tagged(tag)
+    posts = Tag.all_posts(tag)
+    if posts
+      posts.map(&:activity)
+    end
   end
 end

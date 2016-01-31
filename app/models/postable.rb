@@ -21,6 +21,10 @@ module Postable
     end
   end
 
+  def path
+    "#{self.class.table_name}/#{self.id}"
+  end
+
   def poster_name
     user.full_name
   end
