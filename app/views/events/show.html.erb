@@ -1,4 +1,13 @@
 <div class="container">
-	<h1><%=@event.name%></h1>
-	<h2><%=@event.description%></h2>
+  <h1><%=@event.name%></h1>
+  <h2><%=@event.description%></h2>
 </div>
+
+<ul>
+  <% @event.tags.each do |tag| %>
+  <li><%= tag.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'All Job Posts', events_path %>
