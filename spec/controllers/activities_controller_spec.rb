@@ -14,7 +14,7 @@ RSpec.describe ActivitiesController, :type => :controller do
       get :index
 
       expect(response.status).to be 200
-      activities = assigns(:recent_activities)
+      activities = assigns(:activities)
       expect(activities.count).to eq(10)
     end
   end

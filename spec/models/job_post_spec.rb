@@ -27,7 +27,7 @@ RSpec.describe JobPost, :type => :model do
 
   describe "#preview" do
     it "displays the title and start of description" do
-      expect(job_post.preview).to eq("Software Engineer - Build great soft... (posted by Jack)")
+      expect(job_post.preview).to eq("Software Engineer - Build great soft...")
     end
   end
 
