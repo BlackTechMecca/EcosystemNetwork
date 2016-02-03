@@ -9,6 +9,8 @@ module Postable
     base.has_many :taggings, as: :taggable
     base.has_many :tags, through: :taggings
     base.accepts_nested_attributes_for :tags, :update_only => true
+    base.include Elasticsearch::Model
+    base.include Elasticsearch::Model::Callbacks
   end
 
   def tag(*tag_list)

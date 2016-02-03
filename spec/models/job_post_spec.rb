@@ -78,7 +78,7 @@ RSpec.describe JobPost, :type => :model do
     end
   end
 
-  describe "::search" do
+  describe "::non_elastic_search" do
     it "returns all JobPosts with a particular word in the title, description" do
       job_post_no_ruby = FactoryGirl.create(
         :job_post, 
@@ -96,7 +96,7 @@ RSpec.describe JobPost, :type => :model do
         :description => "3+ years Ruby required"
       )
 
-      search_results = JobPost.search("ruby")
+      search_results = JobPost.non_elastic_search("ruby")
       expect(search_results).to include(job_post_ruby_title)
       expect(search_results).to include(job_post_ruby_description)
       expect(search_results).to_not include(job_post_no_ruby)

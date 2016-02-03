@@ -26,12 +26,12 @@ RSpec.describe EventsController, :type => :controller do
         ruby_event = FactoryGirl.create(:event, :name => "Ruby developer event", :user_id => subject.current_user.id)
         java_event = FactoryGirl.create(:event, :name => "Java developer event", :user_id => subject.current_user.id)
 
-        get :index, {:search => "ruby" }
+        get :index, {:q => "ruby" }
         expect(assigns(:events)).to eq([ruby_event])
       end
 
       it "populates the search field with the value of the search" do
-        get :index, {:search => "ruby" }
+        get :index, {:q => "ruby" }
         expect(assigns(:previous_search)).to eq("ruby")
       end
     end

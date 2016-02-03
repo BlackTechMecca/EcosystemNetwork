@@ -19,6 +19,10 @@ gem 'devise'
 gem 'jquery-turbolinks'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'elasticsearch'
+gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   gem 'byebug', '3.4.0'
@@ -31,6 +35,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'pry'
+  gem "pry-byebug", "2.0.0", :require => false
+  gem "pry-stack_explorer", "0.4.9.1", :require => false
+  gem "pry-rescue", "1.4.1", :require => false
   gem 'pry-rails'
 end
 

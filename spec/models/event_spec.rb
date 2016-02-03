@@ -37,7 +37,7 @@ RSpec.describe Event, :type => :model do
     end
   end
 
-  describe "::search" do
+  describe "::non_elastic_search" do
     it "returns all Events with a particular word in the name, description" do
       event_no_ruby = FactoryGirl.create(
         :event, 
@@ -55,7 +55,7 @@ RSpec.describe Event, :type => :model do
         :description => "Comparing approaches in Ruby, Java, and Python"
       )
 
-      search_results = Event.search("ruby")
+      search_results = Event.non_elastic_search("ruby")
       expect(search_results).to include(event_ruby_name)
       expect(search_results).to include(event_ruby_description)
       expect(search_results).to_not include(event_no_ruby)
