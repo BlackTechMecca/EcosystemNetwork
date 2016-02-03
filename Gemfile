@@ -19,6 +19,9 @@ gem 'devise'
 gem 'jquery-turbolinks'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'elasticsearch'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   gem 'byebug', '3.4.0'

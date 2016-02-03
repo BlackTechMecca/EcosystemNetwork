@@ -11,8 +11,8 @@
       <th colspan="3"></th>
     </tr>
     <tr>
-<form class="mainnav-form" role="search" action="/job_posts" method="get">
-  <input type="text" class="form-control input-md mainnav-search-query" name="search" placeholder="Search Jobs" value="<%= @previous_search %>">
+<form class="mainnav-form" role="search" action="/search" method="get">
+  <input type="text" class="form-control input-md mainnav-search-query" name="q" placeholder="Search Jobs" value="<%= @previous_search %>">
   <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
 </form>
     </tr>

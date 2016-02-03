@@ -1,4 +1,7 @@
 class JobPost < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   include Postable
 
   validates :user_id, :title, :description, :presence => true
@@ -6,9 +9,6 @@ class JobPost < ActiveRecord::Base
   def preview
     "#{title} - #{description[0..15]}..."
   end
-  
-  def self.search(query)
-    JobPost
-      .where("title LIKE :query OR description LIKE :query", :query => "%#{query}%")
-  end
 end
+
+JobPost.import force: true

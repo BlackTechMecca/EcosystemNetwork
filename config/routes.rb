@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search', to: 'search#search'
   resources :events
   resources :job_posts do
     collection do

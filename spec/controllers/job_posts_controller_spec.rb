@@ -27,7 +27,7 @@ RSpec.describe JobPostsController, :type => :controller do
         ruby_job_post = FactoryGirl.create(:job_post, :title => "Ruby developer", :user_id => subject.current_user.id)
         java_job_post = FactoryGirl.create(:job_post, :title => "Java developer", :user_id => subject.current_user.id)
 
-        get :index, {:search => "ruby" }
+        get :index, {:q => "ruby" }
         expect(assigns(:job_posts)).to eq([ruby_job_post])
       end
 

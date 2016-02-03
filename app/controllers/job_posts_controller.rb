@@ -3,9 +3,9 @@ class JobPostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if params[:search]
-      @job_posts = JobPost.search(params[:search])
-      @previous_search = params[:search]
+    if params[:q]
+      @job_posts = JobPost.search(params[:q])
+      @previous_search = params[:q]
     else
       @job_posts = JobPost.all
     end

@@ -1,0 +1,15 @@
+[x] make job post search based on keyword; search title, description, tags
+[x] be able to see all THINGS tagged with a given tag
+
+[x] figure out difference between activity and all things you might like
+to tag
+
+[x] make events taggable 
+[x] make events searchable
+
+[ ] be able to add new tags in general
+
+[ ] add a location column to job post
+[ ] convert article into post
+[ ] link news to news feed
+[ ] link job search to job search
