@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
+  # has_secure_password
+  # validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity of the user if they exist

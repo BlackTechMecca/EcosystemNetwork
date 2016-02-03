@@ -1,9 +1,13 @@
 FactoryGirl.define do
   factory :comment do
-  	user    { FactoryGirl.create(:user) }
-  	body    { Faker::Lorem.sentence }
-  	article { FactoryGirl.create(:article) }
-    
+  	transient do 
+  		commentable nil
+  	end
+  	user             { FactoryGirl.create(:user) }
+  	body    	     { Faker::Lorem.sentence }
+  	commentable_type { commentable.class }
+  	commentable_id  { commentable.id }
+ 
   end
 
 end

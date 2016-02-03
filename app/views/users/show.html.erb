@@ -1,3 +1,4 @@
+
 <div class="content">
 
 	<div class="container">
@@ -180,5 +181,15 @@
     <br><br>
 
 	</div>
+
+
+<div class="container">
+	<h3>Submit an article!</h3>
+
+	<%= form_tag("/article/new", method:"post") do %>
+	<%= label_tag(:title,"Title") %>
+	<%= text_field(:title) %>
+  <% end %>
+
 
 </div>

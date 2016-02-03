@@ -21,4 +21,9 @@ RSpec.describe User, :type => :model do
       user.update_attribute(:image_url, "www.new_url.com")
     end.to change { user.full_profile.last_modified_timestamp }
   end
+
+
+
+
+
 end

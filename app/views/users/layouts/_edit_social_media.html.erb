@@ -1,0 +1,61 @@
+<div class="tab-pane fade" id="social-tab">
+
+          <div class="heading-block">
+            <h3>
+              Social Media
+            </h3>
+          </div> <!-- heading block -->
+
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+
+          <br><br>
+          <%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
+            <%= f.fields_for(@social_profile) do |spf| %>
+              <div class="form-group">
+                <label class="col-md-3 control-label">LinkedIn</label>
+                <div class="col-md-7">
+                  <%= spf.text_field :linkedin, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Facebook</label>
+                <div class="col-md-7">
+                  <%= spf.text_field :facebook, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Twitter</label>
+                <div class="col-md-7">
+                  <%= spf.text_field :twitter, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Instagram</label>
+                <div class="col-md-7">
+                  <%= spf.text_field :instagram, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Github</label>
+                <div class="col-md-7">
+                  <%= spf.text_field :github, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-7 col-md-push-3">
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                    &nbsp;
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                </div>
+              </div>
+
+              <% end %>
+            <% end %>
+
+
+        </div>

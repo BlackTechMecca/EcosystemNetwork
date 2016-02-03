@@ -1,0 +1,148 @@
+<div id="settings-content" class="tab-content stacked-content">
+
+        <div class="tab-pane fade in active" id="profile-tab">
+          <div class="heading-block">
+            <h3>
+              Edit Profile
+            </h3>
+          </div>
+
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+
+          <br><br>
+          <%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
+
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2>
+                  <%= pluralize(@user.errors.count, "error") %> prohibited
+                  this user from being saved:
+                </h2>
+
+                <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+          
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">Avatar</label>
+
+              <div class="col-md-7">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="min-width: 125px; min-height: 125px;">
+                    <%= gravatar_for @user %>
+                  </div>
+                  <div>
+                    <a href="http://gravatar.com/emails" target="_blank">change</a>
+                  </div>
+                </div> <!-- File Upload -->
+              </div> <!-- col-md-7 -->
+
+            </div> <!-- form-group -->
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">Username</label>
+
+              <div class="col-md-7">
+                <%= f.text_field :username, class: "form-control", disabled: true %>
+              </div>
+
+            </div> <!-- form-group --> 
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">First Name</label>
+
+              <div class="col-md-7">
+                <%= f.text_field :first_name, class: "form-control" %>
+              </div>
+
+            </div> <!-- form-group -->
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">Last Name</label>
+
+              <div class="col-md-7">
+                <%= f.text_field :last_name, class: "form-control" %>
+              </div>
+
+            </div> <!-- form-group --> 
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">City</label>
+
+              <div class="col-md-7">
+                <%= f.text_field :city, class: "form-control" %>
+              </div>
+
+            </div> <!-- form-group -->
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">State</label>
+
+              <div class="col-md-7">
+                <%= f.collection_select(:state_cd, State.all, :state_cd, :name, {:include_blank => 'Select state'}, {:class => 'form-control'}) %>
+              </div>
+
+            </div> <!-- form-group -->
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">Email Address</label>
+
+              <div class="col-md-7">
+                <%= f.text_field :email, class: "form-control" %>
+              </div>
+
+            </div> <!-- form-group -->
+
+          <%= f.fields_for(@full_profile) do |ff| %>
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">Proposal Comments</label>
+
+              <div class="col-md-7">
+                <%= ff.text_field :proposal_comments , class: "form-control" %>
+              </div>
+
+            </div> <!-- form-group -->
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">Interests</label>
+
+              <div class="col-md-7">
+                <%= ff.text_field :interests , class: "form-control" %>
+              </div>
+
+            </div> <!-- form-group -->
+
+            <div class="form-group">
+
+              <label class="col-md-3 control-label">Associations</label>
+
+              <div class="col-md-7">
+                <%= ff.text_field :associations , class: "form-control" %>
+              </div>
+
+            </div> <!-- form-group -->
+
+          <% end %>
+            <div class="form-group">
+              <div class="col-md-7 col-md-push-3">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                    &nbsp;
+                <button type="reset" class="btn btn-default">Cancel</button>
+              </div> <!-- /.col -->
+            </div> <!-- /.form-group -->
+          <% end %>
+        </div> <!-- /.tab-pane -->
