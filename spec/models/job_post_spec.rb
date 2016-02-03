@@ -72,8 +72,8 @@ RSpec.describe JobPost, :type => :model do
     end
 
     it "should be commentable" do 
-      comment1 = FactoryGirl.create(:comment,commentable_type:job_post.class,commentable_id: job_post.id)
-      comment2 = FactoryGirl.create(:comment,commentable_type:job_post.class,commentable_id: job_post.id)
+      comment1 = FactoryGirl.create(:comment,commentable:job_post)
+      comment2 = FactoryGirl.create(:comment,commentable:job_post)
       expect(job_post.comments).to eq([comment1,comment2])
     end
   end
