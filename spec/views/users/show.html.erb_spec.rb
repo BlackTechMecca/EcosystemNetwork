@@ -16,11 +16,5 @@ RSpec.describe "users/show.html.erb", :type => :view do
   		render
   		expect(rendered).to match(/submit an article/i)
   	end
-
-
-
   end
-
-
-
 end
