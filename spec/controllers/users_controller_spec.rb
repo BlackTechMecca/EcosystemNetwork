@@ -52,4 +52,12 @@ RSpec.describe UsersController, :type => :controller do
       # end
     end
   end
+
+  describe "GET users/:id" do 
+    it "has a route to the users page" do 
+      user_get = FactoryGirl.create(:user)
+      get :show, id: user_get.id
+      expect(response.status).to eq(200)
+    end
+  end
 end

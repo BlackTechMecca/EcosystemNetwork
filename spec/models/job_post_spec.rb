@@ -70,6 +70,12 @@ RSpec.describe JobPost, :type => :model do
       job_post.tag(tag1, tag2)
       expect(job_post.tags.first).to eq(tag1)
     end
+
+    it "should be commentable" do 
+      comment1 = FactoryGirl.create(:comment,commentable:job_post)
+      comment2 = FactoryGirl.create(:comment,commentable:job_post)
+      expect(job_post.comments).to eq([comment1,comment2])
+    end
   end
 
   describe "::search" do
