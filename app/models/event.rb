@@ -7,9 +7,6 @@ class Event < ActiveRecord::Base
   def preview
     "#{name} - #{description[0..15]}..."
   end
-
-  def self.search(query)
-    Event 
-      .where("name LIKE :query OR description LIKE :query", :query => "%#{query}%")
-  end
 end
+
+Event.import force: true
