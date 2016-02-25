@@ -29,12 +29,15 @@ ActiveRecord::Schema.define(version: 20160203013320) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.string   "body",       null: false
-    t.integer  "article_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",          null: false
+    t.string   "body",             null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -106,11 +109,14 @@ ActiveRecord::Schema.define(version: 20160203013320) do
   add_index "states", ["state_cd"], name: "index_states_on_state_cd", unique: true
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "article_id", null: false
-    t.integer  "tag_id",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       null: false

@@ -1,30 +1,60 @@
 <p id="notice"><%= notice %></p>
+<style type="text/css">
+  .title {
+  font-size: 3em;
+  font-weight: bold;
+  }
 
-<p>
-  <strong>Title:</strong>
-  <%= @job_post.title %>
-</p>
+  .sm-font {
+  font-size: .75em;
+  }
 
-<p>
-  <strong>Description:</strong>
-  <%= @job_post.description %>
-</p>
+  .wrapper {
+    background: #fafafa;
+    border: 1px solid #dadada;
+    padding: 1em;
+    width: 75%;
+    float: left;
+  }
 
-<p>
-  <strong>Date:</strong>
-  <%= @job_post.date %>
-</p>
+  .poster-card {
+    background: #fafafa;
+    border: 1px solid #dadada;
+    padding: 1em;
+    width: 20%;
+    float: right;
+  }
 
-<p>
-  <strong>Posted by:</strong>
-  <%= @job_post.poster_name %>
-</p>
+  .poster-card img {
+    width: 40%;
+    height: 40%;
+    float: left;
+  }
+</style>
 
-<ul>
-  <% @job_post.tags.each do |tag| %>
-  <li><%= tag.name %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <p class="title">
+    <%= @job_post.title %>
+    
+  </p>
+  <div class="arrow-up wrapper">
+    <p>
+      <%= @job_post.date.strftime("%b %d, %Y") %>
+      <div class="sm-font">
+      Posted <%= time_ago_in_words(@job_post.date) %> ago
+      </div>
+    </p>
 
-<%= link_to 'Edit', edit_job_post_path(@job_post) %> |
-<%= link_to 'All Job Posts', job_posts_path %>
+    <p>
+      <%= @job_post.description %>
+    </p>
+
+      <%= link_to 'Edit', edit_job_post_path(@job_post) %> |
+      <%= link_to 'Back', job_posts_path %>
+  </div>
+  <div class="poster-card">
+    <h4>Posted by:</h4>
+    <h4><%= link_to "#{@job_post.poster_name}", user_path(@job_post.user_id) %></h4>
+    <%= gravatar_for @job_post.user %>
+  </div>
+</div><br>
