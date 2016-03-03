@@ -15,32 +15,44 @@
   </style>
   <p id="notice"><%= notice %></p>
 
-  <h1>Listing Job Posts</h1>
+<h1>Listing Job Posts</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Poster</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Poster</th>
+      <th colspan="3"></th>
+<form class="mainnav-form" role="search" action="/job_posts" method="get">
+<input type="text" class="form-control input-md mainnav-search-query" name="q" placeholder="Search Jobs" value="<%= @previous_search %>">
+<button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
+</form>
+    </tr>
+  </thead>
 
-    <tbody>
+  <tbody>
+    <% if @job_posts %>
       <% @job_posts.each do |job_post| %>
         <tr>
           <td><%= link_to "#{job_post.title}", job_post %></td>
           <td><%= job_post.description %></td>
           <td><%= job_post.date.strftime("%B %d, %Y") %></td>
-          <td><%= link_to "#{job_post.poster_name}", job_post.user %></td>
-          <td><%= link_to 'Edit', edit_job_post_path(job_post) %></td>
-          <td><%= link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to job_post.title, controller: "job_posts", action: "show", id: job_post.id%></td>
         </tr>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+    <% if @search_results %>
+      <% @search_results.each do |job_post| %>
+        <tr>
+          <td><%= link_to job_post.title, controller: "job_posts", action: "show", id: job_post._id%></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
 
   <br>
 

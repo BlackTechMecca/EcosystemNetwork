@@ -19,16 +19,23 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to event.name, event_path(event)%></td>
-        <td><%= event.description %></td>
-        <td><%= event.date %></td>
-        <td><%= link_to event.poster_name, user_path(event.user) %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if @events %>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= link_to event.name, event_path(event)%></td>
+          <td><%= event.description %></td>
+          <td><%= event.date %></td>
+          <td><%= link_to event.name, controller: "events", action: "show", id: event.id%></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    <% if @search_results %>
+      <% @search_results.each do |event| %>
+        <tr>
+          <td><%= link_to event.name, controller: "events", action: "show", id: event._id%></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

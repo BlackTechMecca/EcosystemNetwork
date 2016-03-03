@@ -3,8 +3,8 @@ class JobPostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if params[:q]
-      @job_posts = JobPost.non_elastic_search(params[:q])
+    if params[:q] && params[:q] != ""
+      @search_results = JobPost.search(params[:q])
       @previous_search = params[:q]
     else
       @job_posts = JobPost.all
