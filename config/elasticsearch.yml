@@ -1,5 +1,5 @@
 config = {
-	host: "http://localhost:9200",
+	host: "search-btm-elasticsearch-test-auosztlx3finjsocnyxs4hejeq.us-west-2.es.amazonaws.com",
 	transport_options {
 		request: {timeout: 5}
 	},
