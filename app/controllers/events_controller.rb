@@ -2,8 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:q]
-      @events = Event.non_elastic_search(params[:q])
+    if params[:q] && params[:q] != ""
+      @search_results = Event.search(params[:q])
       @previous_search = params[:q]
     else
       @events = Event.all
