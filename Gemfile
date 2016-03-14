@@ -21,7 +21,7 @@ gem 'jquery-turbolinks'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'elasticsearch'
-gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
+# gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
