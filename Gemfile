@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.4"
+# ruby "2.2.4"
 
 gem 'rails', '4.2.1'
 gem 'bcrypt', '3.1.7'
@@ -21,7 +21,7 @@ gem 'jquery-turbolinks'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'elasticsearch'
-gem 'elasticsearch-extensions', git: 'https://github.com/elastic/elasticsearch-ruby.git'
+gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
