@@ -42,9 +42,11 @@ group :development, :test do
   gem 'pry-rails'
 end
 
-group :production do
+group :test, :production do
   gem 'pg', '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'puma', '2.14.0'
 end
+
+
 

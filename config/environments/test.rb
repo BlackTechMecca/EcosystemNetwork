@@ -39,4 +39,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  ENV["LINKEDIN_OMNIAUTH_KEY"] = "77oeeddlb08ih5"
+  ENV["LINKEDIN_OMNIAUTH_SECRET"] = "WJNy0BtaO9m9pv5f"
 end
