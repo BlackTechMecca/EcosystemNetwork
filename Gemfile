@@ -24,12 +24,13 @@ gem 'elasticsearch'
 # gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'sqlite3', '1.3.9'
 
 group :development, :test do
   gem 'byebug', '3.4.0'
   gem 'web-console', '2.0.0.beta3'
   gem 'spring', '1.1.3'
-  gem 'sqlite3', '1.3.9'
+#  gem 'sqlite3', '1.3.9'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
   gem 'capybara'
@@ -42,7 +43,7 @@ group :development, :test do
   gem 'pry-rails'
 end
 
-group :test, :production do
+group :production do
   gem 'pg', '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'puma', '2.14.0'
