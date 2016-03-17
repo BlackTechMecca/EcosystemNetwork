@@ -25,6 +25,8 @@ gem 'elasticsearch-extensions', git: 'git://github.com/elasticsearch/elasticsear
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'sqlite3', '1.3.9'
+# unicorn app server
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug', '3.4.0'
